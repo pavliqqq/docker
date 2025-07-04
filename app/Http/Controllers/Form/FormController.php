@@ -86,7 +86,7 @@ class FormController
     public function thirdStep()
     {
         $shareConfig = config('share');
-        $appConfig = config('app');
+        $appConfig = config('php');
 
         $shareUrl = $appConfig['url'];
 

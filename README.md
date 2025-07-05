@@ -16,7 +16,7 @@ git clone https://github.com/pavliqqq/docker.git
 ### 2. Launch Containers and Access app
 
 ```bash
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ```bash

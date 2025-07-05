@@ -1,16 +1,18 @@
 services:
     nginx:
+        container_name: wizardForm_nginx
         image: nginx:latest
         volumes:
             - ./:/var/www
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
             - "8080:80"
-        container_name: wizardForm_nginx
+
         depends_on:
             -   app
 
     app:
+        container_name: wizardForm_app
         build:
             context: .
             dockerfile: docker/php/Dockerfile
@@ -18,9 +20,12 @@ services:
             - ./:/var/www
         depends_on:
             -   mysql
-        container_name: wizardForm_app
+        environment:
+            PHP_IDE_CONFIG: "serverName=wizardForm"
+
 
     mysql:
+        container_name: wizardForm_mysql
         image: mysql:8.0
         restart: always
         ports:
@@ -30,6 +35,6 @@ services:
         environment:
             MYSQL_DATABASE: wizardForm
             MYSQL_ROOT_PASSWORD: root
-        container_name: wizardForm_mysql
+
 
 

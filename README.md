@@ -2,8 +2,7 @@
 
 ## 🧰 Requirements
 
-- Node.js 22.13 and npm 10.9 //check
-- Git (optional)
+- Node.js 18.19+ and npm 9.2+
 
 
 ## ⚙️ Installation
@@ -14,13 +13,23 @@
 git clone https://github.com/pavliqqq/docker.git
 ```
 
-### 2. Install Dependencies
+### 2. Launch Containers and Access app
+
+```bash
+docker-compose up -d
+```
+
+```bash
+docker exec -it wizardForm_app bash
+```
+
+### 3. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Environment Setup
+### 4. Environment Setup
 
 ```bash
 cp .env.example .env
@@ -29,12 +38,6 @@ Edit the .env file to configure your environment variables (database, app key, e
 
 ```bash
 php artisan key:generate
-```
-### 4. Install JS dependencies
-
-```bash
-npm install
-npm run dev
 ```
 
 ### 5. Database Setup
@@ -57,11 +60,13 @@ php artisan db:seed --class=AdminSeeder
 php artisan storage:link
 ```
 
-### 7. Docker compose up
+### 7. Install JS dependencies
 
 ```bash
-docker-compose up -d
+npm install
+npm run dev
 ```
+
 
 Project will be accessible at:
 http://localhost:8080

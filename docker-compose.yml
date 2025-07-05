@@ -6,7 +6,7 @@ services:
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
             - "8080:80"
-        container_name: nginx
+        container_name: wizardForm_nginx
         depends_on:
             -   app
 
@@ -18,7 +18,7 @@ services:
             - ./:/var/www
         depends_on:
             -   mysql
-        container_name: app
+        container_name: wizardForm_app
 
     mysql:
         image: mysql:8.0
@@ -30,6 +30,6 @@ services:
         environment:
             MYSQL_DATABASE: wizardForm
             MYSQL_ROOT_PASSWORD: root
-        container_name: mysql
+        container_name: wizardForm_mysql
 
 

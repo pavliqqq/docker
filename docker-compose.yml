@@ -18,6 +18,8 @@ services:
             dockerfile: docker/php/Dockerfile
         volumes:
             - ./:/var/www
+        command: >
+            sh -c "chown -R www-data:www-data storage bootstrap/cache && php-fpm"
         depends_on:
             -   mysql
         environment:

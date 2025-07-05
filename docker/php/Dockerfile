@@ -13,8 +13,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
 
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-
 COPY docker/php/conf.d/* $PHP_INI_DIR/conf.d/
 
 WORKDIR /var/www

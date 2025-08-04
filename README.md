@@ -13,7 +13,14 @@
 git clone https://github.com/pavliqqq/docker.git
 ```
 
-### 2. Launch Containers and Access app
+### 2. Environment Setup
+
+```bash
+cp .env.example .env
+```
+Edit the .env file to configure your environment variables (database, app key, etc.):
+
+### 3. Launch Containers and Access app
 
 ```bash
 docker-compose up -d --build
@@ -23,24 +30,19 @@ docker-compose up -d --build
 docker exec -it wizardForm_app bash
 ```
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 4. Environment Setup
-
-```bash
-cp .env.example .env
-```
-Edit the .env file to configure your environment variables (database, app key, etc.):
+### 5. Generate key
 
 ```bash
 php artisan key:generate
 ```
 
-### 5. Database Setup
+### 6. Database Setup
 
 1) Run migrations
 
@@ -54,13 +56,13 @@ php artisan migrate
 php artisan db:seed --class=AdminSeeder
 ```
 
-### 6. Create the storage symbolic link
+### 7. Create the storage symbolic link
 
 ```bash
 php artisan storage:link
 ```
 
-### 7. Install JS dependencies
+### 8. Install JS dependencies
 
 ```bash
 npm install

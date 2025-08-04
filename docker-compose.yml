@@ -21,9 +21,10 @@ services:
             sh -c "chown -R www-data:www-data storage bootstrap/cache && php-fpm"
         depends_on:
             -   mysql
+        env_file:
+            - .env
         environment:
             PHP_IDE_CONFIG: "serverName=wizardForm"
-
 
     mysql:
         container_name: wizardForm_mysql
@@ -37,5 +38,11 @@ services:
             MYSQL_DATABASE: wizardForm
             MYSQL_ROOT_PASSWORD: root
 
-
-
+    redis:
+        container_name: wizardForm_redis
+        image: redis:latest
+        restart: always
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./docker/redis:/data
